@@ -79,6 +79,7 @@ namespace ArtaleHelper
                     timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(30);
                     timer.Stop();
                     UpdateTimerLabel();
+                    labelTimer.ForeColor = Color.Black;
                 }
                 else
                 {
