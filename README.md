@@ -7,7 +7,7 @@
 ArtaleHelper.exe와 alarm.wav 파일은 같은 위치에 있어야 합니다. 
 <br><br>
 ## 2. 프로그램 설명
-![3](https://github.com/user-attachments/assets/1d22d548-3da9-4c63-9871-bf6d27720709)
+![3](https://github.com/user-attachments/assets/0a7b6709-8831-45a8-b9a2-e8dc31d0024d)
 <br><br>
 ## 3. 기타 
 ![0](https://github.com/user-attachments/assets/c7c0f9b6-6b42-431f-b56f-a5817a3b0eb2)
