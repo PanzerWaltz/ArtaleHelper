@@ -3,7 +3,9 @@
 <br>
 1. Download ZIP 을 눌러 파일을 다운로드 한 후, 압축을 풀어줍니다.<br><br><br>
 ![2](https://github.com/user-attachments/assets/aabdee2e-dc05-4631-a85f-e605b0b71a3f)
-2. ArtaleHelper.exe를 실행시킵니다.<br><br><br>
+2. ArtaleHelper.exe를 실행시킵니다.<br><br>
+ArtaleHelper.exe와 alarm.wav 파일은 같은 위치에 있어야 합니다. 
+<br><br>
 ## 2. 프로그램 설명
 ![3](https://github.com/user-attachments/assets/1d22d548-3da9-4c63-9871-bf6d27720709)
 <br><br>
