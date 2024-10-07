@@ -23,6 +23,8 @@ namespace ArtaleHelper
         private SoundPlayer alarmSound = null;
         private string soundFilePath = null;
 
+        private int inputTime = 0;
+
         [DllImport("user32.dll")]
         private static extern short GetAsyncKeyState(Keys vKey);
 
@@ -36,6 +38,7 @@ namespace ArtaleHelper
             this.MouseClick += new MouseEventHandler(Form1_MouseClick);
             this.KeyPreview = true;
             this.KeyDown += new KeyEventHandler(Form1_KeyDown);
+            textBoxInputTimer.KeyPress += new KeyPressEventHandler(textBoxInputTimer_KeyPress);
         }
 
         private void buttonActive_Click(object sender, EventArgs e)
@@ -44,6 +47,26 @@ namespace ArtaleHelper
 
             labelActive.Text = $"상단 고정 : {isActive}";
             TopMost = isActive;
+        }
+
+        private void textBoxInputTimer_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter) 
+            {
+                int seconds;
+                bool isNumeric = int.TryParse(textBoxInputTimer.Text, out seconds);
+
+                if (isNumeric && seconds > 0) 
+                {
+                    inputTime = seconds; 
+                    MessageBox.Show($"입력 완료! 입력된 시간: {inputTime}초");
+                }
+                else
+                {
+                    MessageBox.Show("유효한 숫자를 입력하세요.(단위:초)"); 
+                }
+                e.Handled = true;
+            }
         }
 
         private void Form1_MouseClick(object sender, MouseEventArgs e)
@@ -66,7 +89,7 @@ namespace ArtaleHelper
             buttonKeyInput.Text = " ";
         }
 
-        private async  void Form1_KeyDown(object sender, KeyEventArgs e)
+        private async void Form1_KeyDown(object sender, KeyEventArgs e)
         {
             if (keyFlag)
             {
@@ -76,7 +99,7 @@ namespace ArtaleHelper
                     buttonKeyInput.Text = "None";
                     boundKey = Keys.None;
 
-                    timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(30);
+                    timeLeft = TimeSpan.FromSeconds(inputTime);
                     timer.Stop();
                     UpdateTimerLabel();
                     labelTimer.ForeColor = Color.Black;
@@ -84,7 +107,7 @@ namespace ArtaleHelper
                 else
                 {
                     boundKey = e.KeyCode;
-                    buttonKeyInput.Text = boundKey.ToString(); 
+                    buttonKeyInput.Text = boundKey.ToString();
                     await Task.Delay(100);
                     keyFlag = false;
                 }
@@ -93,7 +116,7 @@ namespace ArtaleHelper
 
         private void StartTimer()
         {
-            timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(30);
+            timeLeft = TimeSpan.FromSeconds(inputTime);
             timer.Start();
             UpdateTimerLabel();
             labelTimer.ForeColor = Color.Black;
@@ -147,17 +170,16 @@ namespace ArtaleHelper
             {
                 Thread.Sleep(100);
 
-                // 키 바인딩 중일 때는 타이머를 시작하지 않도록 함
                 if (keyFlag)
                 {
-                    continue; // keyFlag가 true면 키 감지 스킵
+                    continue; 
                 }
 
                 if (boundKey != Keys.None && GetAsyncKeyState(boundKey) < 0)
                 {
                     this.Invoke(new Action(() =>
                     {
-                        timeLeft = TimeSpan.FromMinutes(1) + TimeSpan.FromSeconds(30);
+                        timeLeft = TimeSpan.FromSeconds(inputTime); 
                         labelTimer.ForeColor = Color.Black;
                         isAlarmPlayed = false;
                         if (!timer.Enabled)
