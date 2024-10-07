@@ -34,6 +34,8 @@
             this.labeKeyBind = new System.Windows.Forms.Label();
             this.labelTimer = new System.Windows.Forms.Label();
             this.checkBoxAlarm = new System.Windows.Forms.CheckBox();
+            this.textBoxInputTimer = new System.Windows.Forms.TextBox();
+            this.labelInputTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // buttonActive
@@ -92,10 +94,10 @@
             // 
             this.labelTimer.AutoSize = true;
             this.labelTimer.BackColor = System.Drawing.Color.Transparent;
-            this.labelTimer.Font = new System.Drawing.Font("맑은 고딕", 32F, System.Drawing.FontStyle.Bold);
-            this.labelTimer.Location = new System.Drawing.Point(23, 36);
+            this.labelTimer.Font = new System.Drawing.Font("맑은 고딕", 36F, System.Drawing.FontStyle.Bold);
+            this.labelTimer.Location = new System.Drawing.Point(12, 34);
             this.labelTimer.Name = "labelTimer";
-            this.labelTimer.Size = new System.Drawing.Size(136, 59);
+            this.labelTimer.Size = new System.Drawing.Size(153, 65);
             this.labelTimer.TabIndex = 4;
             this.labelTimer.Text = "00:00";
             // 
@@ -113,6 +115,25 @@
             this.checkBoxAlarm.Text = "알림음";
             this.checkBoxAlarm.UseVisualStyleBackColor = false;
             // 
+            // textBoxInputTimer
+            // 
+            this.textBoxInputTimer.Location = new System.Drawing.Point(120, 104);
+            this.textBoxInputTimer.Name = "textBoxInputTimer";
+            this.textBoxInputTimer.Size = new System.Drawing.Size(35, 21);
+            this.textBoxInputTimer.TabIndex = 7;
+            this.textBoxInputTimer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // labelInputTime
+            // 
+            this.labelInputTime.AutoSize = true;
+            this.labelInputTime.BackColor = System.Drawing.Color.Transparent;
+            this.labelInputTime.Font = new System.Drawing.Font("돋움", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.labelInputTime.Location = new System.Drawing.Point(27, 108);
+            this.labelInputTime.Name = "labelInputTime";
+            this.labelInputTime.Size = new System.Drawing.Size(87, 12);
+            this.labelInputTime.TabIndex = 8;
+            this.labelInputTime.Text = "타이머설정(초)";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
@@ -120,6 +141,8 @@
             this.BackgroundImage = global::ArtaleHelper.Properties.Resources.imageBG;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(344, 201);
+            this.Controls.Add(this.labelInputTime);
+            this.Controls.Add(this.textBoxInputTimer);
             this.Controls.Add(this.checkBoxAlarm);
             this.Controls.Add(this.labelTimer);
             this.Controls.Add(this.labeKeyBind);
@@ -144,6 +167,8 @@
         private System.Windows.Forms.Label labeKeyBind;
         private System.Windows.Forms.Label labelTimer;
         private System.Windows.Forms.CheckBox checkBoxAlarm;
+        private System.Windows.Forms.TextBox textBoxInputTimer;
+        private System.Windows.Forms.Label labelInputTime;
     }
 }
 
